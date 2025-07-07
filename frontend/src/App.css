@@ -1,0 +1,728 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+:root {
+  --bg-main: #151521;
+  --bg-alt: #1c1c2e;
+  --text-main: #f1f1f1;
+  --accent: #ffd54f;
+  --card-bg: rgba(30, 32, 50, 0.95);
+  --input-bg: #3a3b55;
+  --input-focus: #4a4b66;
+  --btn-bg: #42a5f5;
+  --btn-hover: #64b5f6;
+}
+
+/* 🌈 Minimal Theme */
+body.theme-minimal {
+  --bg-main: #000000;
+  --bg-alt: #0a0a0a;
+  --text-main: #f5f5f5;
+  --accent: #ffffff;
+  --card-bg: #111111;
+  --input-bg: #1a1a1a;
+  --input-focus: #222222;
+  --btn-bg: #444444;
+  --btn-hover: #666666;
+}
+
+/* 🟢 Hacker Theme */
+body.theme-hacker {
+  --bg-main: #000000;
+  --bg-alt: #0a0a0a;
+  --text-main: #00ff00;
+  --accent: #00ff00;
+  --card-bg: #111;
+  --input-bg: #050;
+  --input-focus: #080;
+  --btn-bg: #0f0;
+  --btn-hover: #3f3;
+}
+/* ❄️ Frostbite Theme */
+body.theme-frost {
+  --bg-main: #1a1a2e;
+  --bg-alt: #16213e;
+  --text-main: #e0eaff;
+  --accent: #00bcd4;
+  --card-bg: #232946;
+  --input-bg: #2c2f4a;
+  --input-focus: #3c3f5c;
+  --btn-bg: #3a86ff;
+  --btn-hover: #00b4d8;
+}
+
+/* 🔥 Crimson Night Theme */
+body.theme-crimson {
+  --bg-main: #1f0f10;
+  --bg-alt: #2b1213;
+  --text-main: #f8dcdc;
+  --accent: #ff1744;
+  --card-bg: #2c0a0a;
+  --input-bg: #3e1e1e;
+  --input-focus: #5e2e2e;
+  --btn-bg: #d32f2f;
+  --btn-hover: #ff5252;
+}
+
+/* 🌌 Cyber Void Theme */
+body.theme-cyber {
+  --bg-main: #0f0c29;
+  --bg-alt: #302b63;
+  --text-main: #ffffff;
+  --accent: #d500f9;
+  --card-bg: #1e1e3f;
+  --input-bg: #29294d;
+  --input-focus: #3a3a6a;
+  --btn-bg: #8e24aa;
+  --btn-hover: #ba68c8;
+}
+
+/* ===== BASE ===== */
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(to right, var(--bg-main), var(--bg-alt));
+  color: var(--text-main);
+  min-height: 100vh;
+}
+
+/* 🧩 Board Layout */
+.board {
+  display: flex;
+  gap: 1.5rem;
+  padding: 2rem;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  overflow: visible;
+}
+
+.column {
+  background: var(--card-bg);
+  backdrop-filter: blur(8px);
+  border-radius: 16px;
+  padding: 1rem;
+  width: 300px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: visible;
+  position: relative;
+  z-index: 0;
+}
+.column:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.6);
+}
+.column h3 {
+  text-align: center;
+  margin-bottom: 1rem;
+  color: var(--accent);
+  font-size: 1.1rem;
+  text-transform: uppercase;
+}
+
+/* 🗂 Task Card */
+.task-card {
+  background: linear-gradient(145deg, #2e2f45, #232437);
+  border-radius: 14px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.6);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  animation: fadeSlideIn 0.4s ease;
+  position: relative;
+  cursor: grab;
+}
+.task-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.7);
+  background: linear-gradient(145deg, #3c3e5e, #2a2c4a);
+}
+.task-card strong {
+  font-size: 1.1rem;
+  color: var(--text-main);
+}
+.task-card p {
+  font-size: 0.9rem;
+  color: #ccc;
+}
+.task-card small {
+  color: #aaa;
+}
+
+/* 🧠 Buttons */
+.task-buttons button {
+  margin-right: 0.4rem;
+  margin-top: 0.5rem;
+  padding: 0.35rem 0.75rem;
+  background: var(--btn-bg);
+  border: none;
+  border-radius: 6px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 0.8rem;
+  transition: background 0.3s ease;
+}
+.task-buttons button:hover {
+  background: var(--btn-hover);
+}
+
+/* ➕ Add Task Form */
+.task-form {
+  padding: 1rem;
+  background: var(--card-bg);
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.5);
+  border-radius: 12px;
+  margin: 1rem;
+}
+.task-form input,
+.task-form select {
+  padding: 0.55rem;
+  border-radius: 6px;
+  border: none;
+  background: var(--input-bg);
+  color: var(--text-main);
+  transition: background 0.3s ease;
+}
+.task-form input:focus,
+.task-form select:focus {
+  outline: none;
+  background: var(--input-focus);
+}
+.task-form button {
+  background: var(--btn-bg);
+  color: white;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+.task-form button:hover {
+  background: var(--btn-hover);
+}
+
+/* 📊 Stats + Chart */
+.task-stats {
+  background: var(--card-bg);
+  padding: 1.5rem;
+  border-radius: 14px;
+  margin: 1rem auto;
+  max-width: 600px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.6);
+}
+.task-stats h3 {
+  color: var(--accent);
+  margin-bottom: 1rem;
+  text-align: center;
+}
+.task-stats p {
+  margin: 0.4rem 0;
+  color: var(--text-main);
+  font-size: 0.95rem;
+}
+.chart-container {
+  margin: 2rem auto;
+  max-width: 600px;
+  height: 300px;
+}
+
+/* 🌐 Navbar */
+.navbar {
+  background: var(--card-bg);
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--accent);
+  font-size: 1.4rem;
+  font-weight: bold;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.4);
+  border-bottom: 1px solid #333;
+}
+
+.navbar-title {
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: var(--accent);
+}
+
+.theme-picker-container {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 2rem 1rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-main);
+}
+
+.theme-picker-container select {
+  padding: 0.4rem 0.8rem;
+  background: var(--input-bg);
+  color: var(--text-main);
+  border: 1px solid #444;
+  border-radius: 6px;
+  outline: none;
+  cursor: pointer;
+}
+
+/* 🧱 Dashboard + Activity Layout */
+.dashboard-layout {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+  padding: 1.5rem 2rem;
+  flex-wrap: wrap;
+}
+.left-panel,
+.right-panel {
+  flex: 1 1 45%;
+  min-width: 320px;
+}
+.activity-feed {
+  background: var(--card-bg);
+  padding: 1.2rem;
+  border-radius: 12px;
+  box-shadow: 0 5px 14px rgba(0, 0, 0, 0.45);
+  max-height: 560px;
+  overflow-y: auto;
+}
+.activity-feed h3 {
+  color: var(--accent);
+  margin-bottom: 1rem;
+  text-align: center;
+}
+.activity-feed li {
+  padding: 0.5rem 0;
+  border-bottom: 1px dashed #444;
+  font-size: 0.9rem;
+  color: var(--text-main);
+}
+.activity-feed li:last-child {
+  border-bottom: none;
+}
+
+/* ✨ Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.85); }
+  to   { opacity: 1; transform: scale(1); }
+}
+@keyframes fadeSlideIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* 🪟 Modal */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(10, 10, 20, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  pointer-events: auto;
+  animation: fadeIn 0.3s ease-out;
+}
+.modal-content {
+  background: var(--card-bg);
+  padding: 2rem;
+  border-radius: 14px;
+  width: 90%;
+  max-width: 400px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.7);
+  color: var(--text-main);
+  animation: scaleIn 0.3s ease-out;
+}
+.modal-content h2 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  text-align: center;
+  color: var(--accent);
+}
+.modal-content input,
+.modal-content textarea,
+.modal-content select {
+  width: 100%;
+  padding: 0.6rem;
+  margin-bottom: 1rem;
+  border: none;
+  border-radius: 6px;
+  background: var(--input-bg);
+  color: var(--text-main);
+}
+.modal-content textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+.modal-actions {
+  display: flex;
+  justify-content: space-between;
+  transition: background 0.3s;
+}
+.modal-actions button {
+  padding: 0.5rem 1rem;
+  background: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.modal-actions button.cancel {
+  background: #e53935;
+}
+.modal-actions button:hover {
+  opacity: 0.9;
+}
+
+/* 🎯 Priority Badge */
+.priority-badge {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  margin-top: 0.5rem;
+  color: white;
+}
+.priority-low    { background: #00e676; }
+.priority-medium { background: #ffca28; color: #222; }
+.priority-high   { background: #ef5350; }
+
+/* 🛠 Dragging */
+.task-card.dragging {
+  opacity: 0.85;
+  transform: rotate(2deg) scale(1.05);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.7);
+  cursor: grabbing;
+  transition: transform 0.2s, box-shadow 0.2s;
+  z-index: 999;
+}
+
+/* 🎬 Hero banner + typing */
+.hero-banner {
+  text-align: center;
+  margin: 2rem 0 1rem;
+}
+
+.hero-type {
+  font-size: 1.8rem;
+  font-family: 'Courier New', monospace;
+  color: var(--accent);
+  height: 2.2rem;
+}
+
+.cursor {
+  display: inline-block;
+  margin-left: 4px;
+  color: var(--accent);
+  animation: blink 0.7s steps(1) infinite;
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  50.1%, 100% { opacity: 0; }
+}
+
+.hero-title {
+  font-size: 2.2rem;
+  color: #00e5ff;
+  margin-bottom: 0.5rem;
+}
+.hero-sub {
+  font-size: 1.1rem;
+  color: #aaa;
+  font-family: 'Courier New', monospace;
+  overflow: hidden;
+  border-right: 2px solid #00e5ff;
+  white-space: nowrap;
+  width: 0;
+  animation: typing 3s steps(40, end) forwards, blink 0.7s step-end infinite;
+}
+@keyframes typing {
+  to { width: 100%; }
+}
+@keyframes blink {
+  50% { border-color: transparent; }
+}
+
+/* 👏 Section divider */
+.section-divider {
+  text-align: center;
+  font-size: 1rem;
+  color: #666;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  opacity: 0.6;
+}
+
+/* 🪄 Motivational */
+.motivate-line {
+  text-align: center;
+  font-size: 1.05rem;
+  color: #ffca28;
+  margin-bottom: 2rem;
+  animation: fadeIn 1.5s ease;
+}
+.emoji-pulse {
+  display: inline-block;
+  animation: pulse 1.5s infinite;
+  margin-right: 0.5rem;
+}
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.25); }
+  100% { transform: scale(1); }
+}
+.theme-dropdown-wrapper {
+  position: relative;
+  display: inline-block;
+  text-align: right;
+  margin-top: 20px;
+}
+
+
+.theme-trigger {
+  background: var(--card-bg);
+  color: var(--text-main);
+  border: 1px solid #444;
+  padding: 0.4rem 0.9rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s ease;
+}
+
+.theme-trigger:hover {
+  background: var(--input-focus);
+  transform: scale(1.05);
+}
+.theme-dropdown {
+  position: absolute;
+  right: 0;
+  margin-top: 0.5rem;
+  background: var(--card-bg);
+  border: 1px solid #333;
+  border-radius: 8px;
+  padding: 0.4rem 0;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+  animation: scaleFade 0.25s ease-out;
+  z-index: 10;
+  min-width: 160px;
+}
+
+.theme-dropdown li {
+  list-style: none;
+  padding: 0.5rem 1rem;
+  color: var(--text-main);
+  cursor: pointer;
+  font-size: 0.88rem;
+  transition: background 0.2s, padding-left 0.2s;
+}
+
+.theme-dropdown li:hover {
+  background: var(--input-focus);
+  padding-left: 1.3rem;
+}
+
+@keyframes scaleFade {
+  from {
+    opacity: 0;
+    transform: scale(0.9) translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+.theme-bar {
+  display: flex;
+  justify-content: flex-end;
+  padding: 0 2rem;
+  margin-top: -0.5rem;
+}
+.assigned-badge {
+  display: inline-block;
+  margin-top: 0.6rem;
+  padding: 4px 10px;
+  background: var(--btn-hover);
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 500;
+  border-radius: 999px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+  transition: all 0.3s ease;
+  animation: fadeIn 0.4s ease;
+}
+.logout-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: #ef5350;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.3s ease;
+  z-index: 10;
+}
+.logout-btn:hover {
+  background: #e53935;
+}
+.auth-page {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(to right, #1e1e2f, #2a2a3f);
+}
+
+.auth-box {
+  background: #292b40;
+  padding: 2rem 2.5rem;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6);
+  max-width: 400px;
+  width: 100%;
+  animation: fadeIn 0.6s ease-out;
+  text-align: center;
+}
+
+.auth-title {
+  color: #00e5ff;
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.auth-subtitle {
+  color: #ccc;
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.auth-switch {
+  margin-top: 1rem;
+  color: #bbb;
+  font-size: 0.9rem;
+}
+
+.auth-link {
+  color: #42a5f5;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.auth-link:hover {
+  text-decoration: underline;
+}
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+}
+
+.auth-form h2 {
+  color: #fff;
+  margin-bottom: 1rem;
+}
+
+.auth-input {
+  width: 100%;
+  padding: 0.6rem;
+  background: #3a3b55;
+  border: none;
+  border-radius: 6px;
+  color: white;
+  transition: background 0.3s ease;
+}
+
+.auth-input:focus {
+  outline: none;
+  background: #4a4b66;
+}
+
+.auth-btn {
+  width: 100%;
+  padding: 0.6rem;
+  background: #42a5f5;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.3s ease;
+}
+
+.auth-btn:hover {
+  background: #64b5f6;
+}
+
+.auth-error {
+  color: #ef5350;
+  font-size: 0.9rem;
+  margin-top: -0.5rem;
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+/* 🖱️ Custom Scrollbar Styling for Dark Themes */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent; /* keeps it subtle */
+}
+
+::-webkit-scrollbar-thumb {
+  background: #555;
+  border-radius: 6px;
+  transition: background 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #888;
+}
+
+/* Firefox scrollbar (for better compatibility) */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #555 transparent;
+}
+@media (max-width: 600px) {
+  .board {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+  }
+
+  .column {
+    flex: 0 0 90%;
+    margin-right: 1rem;
+  }
+}
+@media (max-width: 768px) {
+  .board {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+@media (min-width: 768px) {
+  .left-panel, .right-panel {
+    flex: 1 1 48%;
+  }
+}
