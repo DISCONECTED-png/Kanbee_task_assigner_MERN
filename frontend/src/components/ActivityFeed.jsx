@@ -7,7 +7,7 @@ const ActivityFeed = ({ token }) => {
   useEffect(() => {
     const fetchLogs = async () => {
       try {
-        const res = await fetch('http://localhost:5000/api/actions', {
+        const res = await fetch('https://kanbee-task-assigner-mern.onrender.com/api/actions', {
           headers: { Authorization: `Bearer ${token}` },
         });
         const data = await res.json();

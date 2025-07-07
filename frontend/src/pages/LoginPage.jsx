@@ -8,7 +8,7 @@ const LoginPage = () => {
 
   const handleLogin = async (form, setError) => {
     try {
-      const res = await fetch('http://localhost:5000/api/auth/login', {
+      const res = await fetch('https://kanbee-task-assigner-mern.onrender.com/api/auth/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body: new URLSearchParams({

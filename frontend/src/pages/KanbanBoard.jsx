@@ -181,7 +181,7 @@ const KanbanBoard = () => {
   const handleSmartAssign = async (taskId) => {
     try {
       const res = await fetch(
-        `http://localhost:5000/api/tasks/${taskId}/smart-assign`,
+        `https://kanbee-task-assigner-mern.onrender.com/api/tasks/${taskId}/smart-assign`,
         {
           method: 'POST',
           headers: { Authorization: `Bearer ${token}` },
@@ -211,7 +211,7 @@ const KanbanBoard = () => {
 
     try {
       const res = await fetch(
-        `http://localhost:5000/api/tasks/${taskId}`,
+        `https://kanbee-task-assigner-mern.onrender.com/api/tasks/${taskId}`,
         {
           method: 'DELETE',
           headers: { Authorization: `Bearer ${token}` },
@@ -232,7 +232,7 @@ const KanbanBoard = () => {
     if (!task) return;
   
     try {
-      const res = await fetch(`http://localhost:5000/api/tasks/${taskId}`, {
+      const res = await fetch(`https://kanbee-task-assigner-mern.onrender.com/api/tasks/${taskId}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',

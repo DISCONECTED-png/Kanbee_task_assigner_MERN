@@ -8,7 +8,7 @@ const RegisterPage = () => {
 
   const handleRegister = async (form, setError) => {
     try {
-      const res = await fetch('http://localhost:5000/api/auth/register', {
+      const res = await fetch('https://kanbee-task-assigner-mern.onrender.com/api/auth/register', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body: new URLSearchParams({
