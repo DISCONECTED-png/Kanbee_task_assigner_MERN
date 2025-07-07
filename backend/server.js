@@ -17,7 +17,7 @@ const server = http.createServer(app);
 
 const io = new SocketIO(server, {
   cors: {
-    origin: 'https://kanbee-task-assigner-mern.onrender.com',
+    origin: 'https://kanbee.onrender.com',
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     credentials: true,
   },
@@ -31,7 +31,7 @@ io.on('connection', (socket) => {
   });
 });
 
-app.use(cors({ origin: 'https://kanbee-task-assigner-mern.onrender.com', credentials: true }));
+app.use(cors({ origin: 'https://kanbee.onrender.com', credentials: true }));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
