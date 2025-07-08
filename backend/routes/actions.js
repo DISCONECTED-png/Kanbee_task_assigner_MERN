@@ -1,9 +1,9 @@
 import express from 'express';
-import { getActions } from '../controllers/actionController.js';
+import { getAllActions } from '../controllers/actionController.js';
 import auth from '../middleware/authMiddleware.js';
 
 const router = express.Router();
 
-router.get('/', auth, getActions);
+router.get('/', auth, getAllActions);
 
 export default router;
