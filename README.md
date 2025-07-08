@@ -84,7 +84,7 @@ Displays:
 ## 📦 Installation
 
 ### 🧪 Clone Project
-git clone https://github.com/yourusername/kanbee.git
+git clone https://github.com/DISCONECTED-png/Kanbee_task_assigner_MERN.git
 cd kanbee
 
 ##🔧 Backend Setup
