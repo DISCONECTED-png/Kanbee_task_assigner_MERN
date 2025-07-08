@@ -117,4 +117,5 @@ Bonus Features
 - Responsive Design
 - Motivational taglines
 
-
+Logic Document
+- https://drive.google.com/file/d/1cVheDKbrh3CO6STnn-DnSUbr1yb4LHMm/view?usp=drive_link
