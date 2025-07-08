@@ -105,7 +105,7 @@ Run server:
 - npm run dev
 
 Test Credentials:
-- Email: testuser@mail.com
+- Email: testuser@gmail.com
 - Password: test123
 
 Demo Video:
