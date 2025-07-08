@@ -1,17 +1,15 @@
 import Action from '../models/Action.js';
 
-export const getActions = async (req, res) => {
+export const getAllActions = async (req, res) => {
   try {
-    const limit = parseInt(req.query.limit) || 20;
-
-    const actions = await Action.find()
-      .sort({ timestamp: -1 })
-      .limit(limit)
-      .populate('user', 'name email') 
+    const logs = await Action.find()
+      .sort({ createdAt: -1 })         
+      .limit(20)                        
+      .populate('user', 'name')
       .populate('task', 'title');
-
-    res.json(actions);
+      
+    res.json(logs);
   } catch (err) {
-    res.status(500).json({ message: 'Failed to fetch actions', error: err.message });
+    res.status(500).json({ message: 'Error fetching logs', error: err.message });
   }
 };
