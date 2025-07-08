@@ -88,18 +88,33 @@ git clone https://github.com/DISCONECTED-png/Kanbee_task_assigner_MERN.git
 cd kanbee
 
 ##🔧 Backend Setup
-cd backend
-npm install
+- cd backend
+- npm install
 
 Create .env file:
-PORT=5000
-MONGO_URI=your_mongo_connection_string
-JWT_SECRET=your_secret_key
+- PORT=5000
+- MONGO_URI=your_mongo_connection_string
+- JWT_SECRET=your_secret_key
 
 Run server:
-npm run dev
+- npm run dev
 
 🎨 Frontend Setup
-cd frontend
-npm install
-npm run dev
+- cd frontend
+- npm install
+- npm run dev
+
+Test Credentials:
+- Email: testuser@mail.com
+- Password: test123
+
+Demo Video:
+- https://drive.google.com/file/d/1AurhU_yy0GyjPun4qqvP9FVXfU4M41Ea/view?usp=sharing
+
+Bonus Features
+- Theme Picker (Minimal, Hacker, Cyber, Crimson, Frostbite…)
+- Animations on drag, typing, buttons
+- Responsive Design
+- Motivational taglines
+
+
